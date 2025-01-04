@@ -49,7 +49,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ refAbout }) => {
       className='flex-1 relative overflow-hidden md:mx-auto mx-6 h-full mt-10'
     >
     {data.map((item: any, index: number) => (
-      <SlideUp offset='-300px 0px -300px 0px '>
+      <SlideUp offset='-300px 0px -300px 0px' key={index}>
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

@@ -20,7 +20,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ refHero }) => {
 
   useEffect(() => {
     setSection('home');
-  }, []);
+  }, [setSection]);
 
   return (
     <>
