@@ -1,8 +1,8 @@
 'use client'
 import { useEffect, useState } from 'react';
-import { img } from '../public/images';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import logo_screen from "@/public/logo_screen.png";
 
 
 export const SplashScreen = () => {
@@ -28,25 +28,20 @@ const show = {
   };
 
   return (
-    <main 
-      className='bg-cover bg-fixed bg-no-repeat h-screen'
-    //   style={{
-    //   backgroundImage: `url(${img.bgDesk})`,
-    // }}
-    >
+    <main>
       <div
-        className='flex items-center justify-center h-screen '
+        className='flex items-center justify-center h-screen bg-LM'
       >
         <motion.div
-          className='-mt-24 md:my-auto dark:invert'
+          className='-mt-24 md:my-auto invert'
           initial={{ opacity: 0, scale: 0 }}
           animate={showSplash ? show : hide}
         > 
           <Image
-            src={img.LMg}
+            src={logo_screen}
             alt='LM'
-            width={70}
-            height={70}
+            width={200}
+            height={200}
             priority
           />
         </motion.div>

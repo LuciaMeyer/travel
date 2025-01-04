@@ -15,7 +15,8 @@ module.exports = {
         'gradient': 'conic-gradient(at center top, rgb(120, 113, 108), rgb(245, 245, 244), rgb(113, 113, 122))',
       },
       colors: {
-        LM: '#f9b621',
+        // LM: '#f9b621',
+        LM: '#01B6BD',
         LM50:'#fbda8f',
         LM40:'#fde2a6',
         LM30:'#feeabd',

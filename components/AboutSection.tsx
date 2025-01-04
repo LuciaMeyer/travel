@@ -1,202 +1,80 @@
 'use client';
-import { SlideUp, AboutKnowMe, AboutJourney, AboutMotivation, AboutSkills } from '@/components';
+import { SlideUp } from '@/components';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect } from 'react';
 import { img } from '../public/images';
-import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import { motion } from 'framer-motion';
-import { Link } from 'react-scroll';
-
-interface SectionContent {
-  [key: string]: JSX.Element;
-}
 
 interface AboutSectionProps {
   refAbout: React.RefObject<HTMLElement>;
 }
 
 export const AboutSection: React.FC<AboutSectionProps> = ({ refAbout }) => {
-  const [currentMenuWeb, setCurrentMenuWeb] = useState('Conoceme');
-  const [currentMenuMobile, setCurrentMenuMobile] = useState('');
-  const [same, setSame] = useState(false);
 
-  const menuOrder = ['Conoceme', 'Recorrido', 'Habilidades', 'Motivación'];
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
 
-  const sections: SectionContent = {
-    Conoceme: <AboutKnowMe />,
-    Recorrido: <AboutJourney />,
-    Habilidades: <AboutSkills />,
-    Motivación: <AboutMotivation />,
-  };
-
-  const handleClick = (section: string, platform: string) => {
-    if (platform === 'web') {
-      setCurrentMenuWeb('');
-      setTimeout(() => {
-        setCurrentMenuWeb(section);
-      }, 500);
-    } else {
-      if (section === currentMenuMobile) {
-        setSame(true);
-        setCurrentMenuMobile('');
-      } else {
-        setSame(false);
-        setCurrentMenuMobile('');
-        setTimeout(() => {
-          setCurrentMenuMobile(section);
-        }, 500);
-      }
-    }
-  };
-
-  const handleArrowClick = () => {
-    const currentIndex = menuOrder.indexOf(currentMenuWeb);
-    const nextIndex = (currentIndex + 1) % menuOrder.length;
-    setCurrentMenuWeb(menuOrder[nextIndex]);
-  };
-
-  const show = {
-    transition: { duration: 1 },
-    x: 0,
-    scale: 1,
-    height: 'auto',
-  };
-
-  const hide = {
-    transition: same ? { duration: 1 } : { duration: 2 },
-    x: -500,
-    scale: 1,
-    height: 0,
-    overflow: 'hidden',
-  };
-
-  const showW = {
-    transition: { duration: 1, delay: 0.2 },
-    height: 'auto',
-  };
-
-  const hideW = {
-    transition: { duration: 0.5 },
-    height: 0,
-    overflow: 'hidden',
-    opacity: 0,
-  };
+  const data: any = [
+    {
+      date: "mayo 2024",
+      trip: "Playa del Carmen",
+      detail: "México",
+      src: img.playa
+    },
+    {
+      date: "julio 2024",
+      trip: "Bodega BordeRío",
+      detail: "Victoria",
+      src: img.victoria
+    },
+    {
+      date: "septiembre 2024",
+      trip: "Esteros del Iberá",
+      detail: "Corrientes",
+      src: img.ibera
+    },
+    {
+      date: "noviembre 2024",
+      trip: "Buenos Aires",
+      detail: "Capital",
+      src: img.bsas
+    },
+  ];
 
   return (
     <section
       ref={refAbout}
       id='about'
-      className='flex-1 pt-4 md:pt-10 pb-60 relative overflow-hidden md:mx-auto mx-6 h-full md:h-[60rem] '
+      className='flex-1 relative overflow-hidden md:mx-auto mx-6 h-full mt-10'
     >
-      <SlideUp offset='-300px 0px -300px 0px'>
-        <Link
-          to='about'
-          smooth={true}
-          offset={-100}
-          duration={1000}
-          className='md:hidden flex flex-row items-center my-auto md:pb-10 pb-8'
-        >
-          <h2 className='text-center text-3xl font-bold text-LM'>Sobre Mi</h2>
-        </Link>
-      </SlideUp>
-
+    {data.map((item: any, index: number) => (
       <SlideUp offset='-300px 0px -300px 0px '>
-        {/* SUBMENÚ WEB & SECTION WEB*/}
-        <div
-          className='md:flex hidden w-1/2 mx-auto justify-around
-          py-4 mb-4 dark:bg-BGD bg-white
-          shadow-lg shadow-neutral-400 dark:shadow-black'
+        <motion.section
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.5 }}
+          id={`trip-${index}`}
+          className="flex flex-col justify-center md:mb-40 mb-20 mt-10"
         >
-          {menuOrder.map((sm, i) => (
-            <Link
-              key={i}
-              to='about'
-              smooth={true}
-              offset={-100}
-              duration={1000}
-              spy={true}
-            >
-              <button key={i} onClick={() => handleClick(sm, 'web')}>
-                <h4
-                  className={`                 
-                    hover:text-LM tracking-wide text-lg dark:hover:text-LM transform transition-transform duration-300'
-                   ${sm === currentMenuWeb ? ' font-medium text-LM' : ''}`}
-                >
-                  {sm}
-                </h4>
-              </button>
-            </Link>
-          ))}
-          <div className='my-auto pl-2' onClick={handleArrowClick}>
-            <Image
-              className={`ml-2 w-auto h-7 hover:scale-90 cursor-pointer -rotate-90 dark:invert ${
-                currentMenuWeb === 'CV' && 'rotate-90'
-              } transform transition-transform duration-300 opacity-40 hover:opacity-20 `}
-              width='30'
-              height='30'
-              src={img.flecha}
-              alt='img'
-              priority
-            />
+          <div className="flex flex-col justify-center mb-9 bg-white dark:bg-BGD">
+            <span className="md:text-center" style={{ fontSize: '1rem' }}>{ item.date }</span>
+            <h2 className="md:text-center font-bold text-LM" style={{ fontSize: '2rem' }}>{ item.trip }</h2>
+            <h3 className="md:text-center" style={{ fontSize: '1.5rem' }}>{ item.detail }</h3>
           </div>
-        </div>
-
-        <div className='md:block hidden justify-center mx-auto'>
-          {menuOrder.map((section, index) => (
-            <motion.div
-              key={index}
-              initial={{ scale: 1, height: 0, overflow: 'hidden' }}
-              animate={currentMenuWeb === section ? showW : hideW}
+          <div className="mx-auto mb-4 md:mb-0">
+            <video
+              width="350"
+              height="315"
+              controls
+              className="border border-neutral-300 dark:border-neutral-700"
             >
-              {sections[section]}
-            </motion.div>
-          ))}
-        </div>
-
-        {/* SUB MENU & SECTION MOBILE */}
-        {menuOrder.map((section, index) => (
-          <div className='relative' key={index}>
-            <Link
-              to={`${section === currentMenuMobile ? '' : 'about'}`}
-              smooth={true}
-              offset={index * 135}
-              duration={2000}
-              spy={true}
-            >
-              <button
-                onClick={() => handleClick(section, 'mobile')}
-                className={`
-                flex flex-col md:hidden w-full cursor-pointer
-                pl-4 mb-6 py-6 mx-auto    
-                tracking-widest text-neutral-500 
-                shadow-md shadow-neutral-400 font-light dark:shadow-black
-                ${
-                  currentMenuMobile === section
-                    ? 'text-white bg-LM dark:BGDi '
-                    : 'bg-neutral-100 dark:bg-BDGi dark:text-stone-300/70'
-                }`}
-                style={{ fontSize: '1.1rem' }}
-              >
-                {section}
-                <div className='absolute top-5 right-4'>
-                  {currentMenuMobile === section ? (
-                    <IoIosArrowUp size={22} />
-                  ) : (
-                    <IoIosArrowDown size={22} />
-                  )}
-                </div>
-              </button>
-            </Link>
-            <motion.div
-              initial={{ scale: 0, height: 0 }}
-              animate={currentMenuMobile === section ? show : hide}
-              className='block md:hidden my-4'
-            >
-              {sections[section]}
-            </motion.div>
+              <source src={item.src} type="video/mp4" />
+            </video>
           </div>
-        ))}
+        </motion.section> 
       </SlideUp>
+    ))}
     </section>
   );
 };

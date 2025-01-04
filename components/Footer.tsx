@@ -9,7 +9,7 @@ export const Footer = () => {
           target='_blank'
           className='hover:text-LM'
         >
-          © 2023 Lucía Meyer
+          © 2025 Lucía Meyer
         </a>
       </div>
     </div>

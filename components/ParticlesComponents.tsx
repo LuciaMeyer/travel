@@ -45,7 +45,7 @@ export const ParticlesComponents = () => {
               value: ['#7f7f7f'],
             },
             distance: 150,
-            enable: true,
+            enable: false,
             opacity: 0.1,
             width: 1,
           },
@@ -73,10 +73,11 @@ export const ParticlesComponents = () => {
             value: 0.3,
           },
           shape: {
-            type: 'circle',
+            type: 'triangle',
+            
           },
           size: {
-            value: { min: 0.5, max: 4 },
+            value: { min: 1, max: 6 },
           },
         },
         detectRetina: true,

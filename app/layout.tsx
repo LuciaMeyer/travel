@@ -5,6 +5,7 @@ import { ScreenProvider } from '@/context/screenContext';
 import { SectionProvider } from '@/context/sectionContext';
 import { motion } from 'framer-motion';
 import { Jost } from '@next/font/google';
+import { Amatic_SC } from '@next/font/google';
 import { ThemeProvider } from 'next-themes';
 import { usePathname } from 'next/navigation';
 import 'atropos/css';
@@ -16,9 +17,15 @@ const JostFont = Jost({
   style: ['normal', 'italic'],
 });
 
+const AmaticSCFont = Amatic_SC({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  style: ['normal'],
+});
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   
-  const [showSplash, setShowSplash] = useState(false);
+  const [showSplash, setShowSplash] = useState(true);
   const [opacity, setOpacity] = useState(true);
   const pathname = usePathname();
 
@@ -38,7 +45,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   };
 
   return (
-    <html lang='es' className={JostFont.className}>
+    // <html lang='es' className={JostFont.className}>
+    <html lang='es' className={AmaticSCFont.className}>
       <head />
       <body
         className='dark:bg-BGD

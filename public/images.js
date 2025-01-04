@@ -80,6 +80,10 @@ export const img = {
     sc:'https://res.cloudinary.com/dw272kava/image/upload/v1697901765/AboutSkills/sc_ivfvdg.png',
     kn:'https://res.cloudinary.com/dw272kava/image/upload/v1697902609/AboutSkills/kn_y0vol7.png',
 
-
+    // Travel Videos
+    playa: 'https://res.cloudinary.com/dw272kava/video/upload/v1736016737/Viajes/playa_ihi5f9.mp4',
+    victoria: 'https://res.cloudinary.com/dw272kava/video/upload/v1736016724/Viajes/victoria_nkwr2b.mp4',
+    ibera: 'https://res.cloudinary.com/dw272kava/video/upload/v1736016732/Viajes/iber%C3%A1_otqocz.mp4',
+    bsas: 'https://res.cloudinary.com/dw272kava/video/upload/v1736016717/Viajes/buenos_aires_gav9p1.mp4',
   };
   
