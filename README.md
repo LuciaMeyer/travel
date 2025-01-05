@@ -1,3 +1,2 @@
-# Tailwind CSS and Next.js Portfolio
-
-Portfolio with Tailwind CSS and Next.js.
+# Tailwind CSS and Next.js App
+App with Tailwind CSS and Next.js.
