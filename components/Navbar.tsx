@@ -17,7 +17,7 @@ import Link from 'next/link'
 
 export const Navbar = () => {
   const { theme, setTheme } = useTheme();
-  const [showParticles, setShowParticles] = useState(false);
+  const [showParticles, setShowParticles] = useState(true);
   const isMobile = useContext(screenContext);
   const objetcContext = useContext(sectionContext);
   const section = objetcContext.section;

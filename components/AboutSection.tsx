@@ -20,25 +20,25 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ refAbout }) => {
       date: "mayo 2024",
       trip: "Playa del Carmen",
       detail: "México",
-      src: img.playa
+      src: img.playaBlur
     },
     {
       date: "julio 2024",
       trip: "Bodega BordeRío",
       detail: "Victoria",
-      src: img.victoria
+      src: img.victoriaBlur
     },
     {
       date: "septiembre 2024",
       trip: "Esteros del Iberá",
       detail: "Corrientes",
-      src: img.ibera
+      src: img.iberaBlur
     },
     {
       date: "noviembre 2024",
       trip: "Buenos Aires",
       detail: "Capital",
-      src: img.bsas
+      src: img.bsasBlur
     },
   ];
 
@@ -63,7 +63,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ refAbout }) => {
               <h2 className="md:text-center font-bold text-LM" style={{ fontSize: '2rem' }}>{ item.trip }</h2>
               <h3 className="md:text-center" style={{ fontSize: '1.5rem' }}>{ item.detail }</h3>
             </div>
-            <div className="mx-auto mb-4 md:mb-0">
+            <div className="relative mx-auto mb-4 md:mb-0 w-fit">
               <video
                 width="350"
                 height="315"
@@ -72,6 +72,11 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ refAbout }) => {
               >
                 <source src={item.src} type="video/mp4" />
               </video>
+              <div className="pointer-events-none absolute top-0 left-0 w-full h-full flex items-center justify-center z-10">
+                <span className="text-white text-2xl font-bold bg-black/20 px-2 py-2 rounded">
+                  PRIVATE
+                </span>
+              </div>
             </div>
           </motion.section> 
         </SlideUp>
